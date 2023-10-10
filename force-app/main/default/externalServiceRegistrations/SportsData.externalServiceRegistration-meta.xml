@@ -1,0 +1,3239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>SportsData</label>
+    <namedCredentialReference>Sports_Data</namedCredentialReference>
+    <operations>
+        <active>true</active>
+        <name>aregamesinprogress</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>currentseason</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>gamesbydate</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>gamesbydatebasic</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>news</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>newsbydate</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>newsbyplayer</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playerdetailsbyactive</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playerdetailsbyfreeagents</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playerdetailsbyplayer</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playersbyactivebasic</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playersbyfreeagentbasic</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playersbyteam</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>playersbyteambasic</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>pushauthenticationgamestate</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>schedules</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>schedulesbasic</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>stadiums</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>standings</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>teamgamelogsbyseason</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>teamgamestatsbydate</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>teamsactive</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>teamsall</name>
+    </operations>
+    <operations>
+        <active>true</active>
+        <name>teamseasonstats</name>
+    </operations>
+    <registrationProviderType>Custom</registrationProviderType>
+    <schema>{
+  &quot;swagger&quot;: &quot;2.0&quot;,
+  &quot;info&quot;: {
+    &quot;description&quot;: &quot;MLB scores API.&quot;,
+    &quot;version&quot;: &quot;1.0&quot;,
+    &quot;title&quot;: &quot;MLB v3 Scores&quot;
+  },
+  &quot;host&quot;: &quot;api.sportsdata.io&quot;,
+  &quot;basePath&quot;: &quot;/v3/mlb/scores&quot;,
+  &quot;tags&quot;: [],
+  &quot;schemes&quot;: [
+    &quot;http&quot;,
+    &quot;https&quot;
+  ],
+  &quot;security&quot;: [
+    {
+      &quot;apiKeyHeader&quot;: []
+    },
+    {
+      &quot;apiKeyQuery&quot;: []
+    }
+  ],
+  &quot;paths&quot;: {
+    &quot;/{format}/teams&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Teams (Active)&quot;,
+        &quot;operationId&quot;: &quot;TeamsActive&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Team&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/Stadiums&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Stadiums&quot;,
+        &quot;operationId&quot;: &quot;Stadiums&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;xml&quot;,
+            &quot;enum&quot;: [
+              &quot;xml&quot;,
+              &quot;json&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Stadium&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/Games/{season}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Schedules&quot;,
+        &quot;operationId&quot;: &quot;Schedules&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;season&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Year of the season (with optional season type).&lt;br&gt;Examples: &lt;code&gt;2018&lt;/code&gt;, &lt;code&gt;2018PRE&lt;/code&gt;, &lt;code&gt;2018POST&lt;/code&gt;, &lt;code&gt;2018STAR&lt;/code&gt;, &lt;code&gt;2019&lt;/code&gt;, etc.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Game&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/GamesByDate/{date}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Games by Date&quot;,
+        &quot;operationId&quot;: &quot;GamesByDate&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;date&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;The date of the game(s).\n&lt;br&gt;Examples: &lt;code&gt;2017-JUL-31&lt;/code&gt;, &lt;code&gt;2017-SEP-01&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Game&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/Players&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Player Details by Active&quot;,
+        &quot;operationId&quot;: &quot;PlayerDetailsByActive&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Player&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/FreeAgents&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Player Details by Free Agents&quot;,
+        &quot;operationId&quot;: &quot;PlayerDetailsByFreeAgents&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Player&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/Players/{team}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Players by Team&quot;,
+        &quot;operationId&quot;: &quot;PlayersByTeam&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;team&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;The abbreviation of the requested team.\n&lt;br&gt;Examples: &lt;code&gt;SF&lt;/code&gt;, &lt;code&gt;NYY&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Player&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/TeamGameStatsByDate/{date}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Team Game Stats by Date&quot;,
+        &quot;operationId&quot;: &quot;TeamGameStatsByDate&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;date&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;The date of the game(s).\n&lt;br&gt;Examples: &lt;code&gt;2017-JUL-31&lt;/code&gt;, &lt;code&gt;2017-SEP-01&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/TeamGame&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/TeamSeasonStats/{season}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Team Season Stats&quot;,
+        &quot;operationId&quot;: &quot;TeamSeasonStats&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;season&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Year of the season.\n&lt;br&gt;Examples: &lt;code&gt;2017&lt;/code&gt;, &lt;code&gt;2018&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/TeamSeason&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/NewsByDate/{date}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;News by Date&quot;,
+        &quot;operationId&quot;: &quot;NewsByDate&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;date&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;The date of the news.\n&lt;br&gt;Examples: &lt;code&gt;2017-JUL-31&lt;/code&gt;, &lt;code&gt;2017-SEP-01&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/News&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/News&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;News&quot;,
+        &quot;operationId&quot;: &quot;News&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/News&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/NewsByPlayerID/{playerid}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;News by Player&quot;,
+        &quot;operationId&quot;: &quot;NewsByPlayer&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;playerid&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Unique FantasyData Player ID.\nExample:&lt;code&gt;10000507&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/News&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/AreAnyGamesInProgress&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Are Games In Progress&quot;,
+        &quot;description&quot;: &quot;Returns &lt;code&gt;true&lt;/code&gt; if there is at least one game being played at the time of the request or &lt;code&gt;false&lt;/code&gt; if there are none.&quot;,
+        &quot;operationId&quot;: &quot;AreGamesInProgress&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;,
+              &quot;x-nullable&quot;: false
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/Player/{playerid}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Player Details by Player&quot;,
+        &quot;operationId&quot;: &quot;PlayerDetailsByPlayer&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;playerid&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Unique FantasyData Player ID.\nExample:&lt;code&gt;10000507&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/Player&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/CurrentSeason&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Current Season&quot;,
+        &quot;operationId&quot;: &quot;CurrentSeason&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/Season&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/Standings/{season}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Standings&quot;,
+        &quot;operationId&quot;: &quot;Standings&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;season&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Year of the season.\n&lt;br&gt;Examples: &lt;code&gt;2017&lt;/code&gt;, &lt;code&gt;2018&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Standing&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/AllTeams&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Teams (All)&quot;,
+        &quot;operationId&quot;: &quot;TeamsAll&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/Team&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/TeamGameStatsBySeason/{season}/{teamid}/{numberofgames}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Team Game Logs By Season&quot;,
+        &quot;description&quot;: &quot;Game by game log of total team statistics.&quot;,
+        &quot;operationId&quot;: &quot;TeamGameLogsBySeason&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;season&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Season to get games from. Example &lt;code&gt;2019POST&lt;/code&gt;, &lt;code&gt;2020&lt;/code&gt;&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          },
+          {
+            &quot;name&quot;: &quot;teamid&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Unique ID of team.  Example &lt;code&gt; 12 &lt;/code&gt;&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          },
+          {
+            &quot;name&quot;: &quot;numberofgames&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;How many games to return. Example &lt;code&gt;all&lt;/code&gt;, &lt;code&gt;10&lt;/code&gt;, &lt;code&gt;25&lt;/code&gt;&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/TeamGame&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/SchedulesBasic/{season}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Schedules (Basic)&quot;,
+        &quot;operationId&quot;: &quot;SchedulesBasic&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;season&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Year of the season (with optional season type).&lt;br&gt;Examples: &lt;code&gt;2018&lt;/code&gt;, &lt;code&gt;2018PRE&lt;/code&gt;, &lt;code&gt;2018POST&lt;/code&gt;, &lt;code&gt;2018STAR&lt;/code&gt;, &lt;code&gt;2019&lt;/code&gt;, etc.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/ScheduleBasic&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/PlayersBasic/{team}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Players by Team (Basic)&quot;,
+        &quot;operationId&quot;: &quot;PlayersByTeamBasic&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;team&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;The abbreviation of the requested team.\n&lt;br&gt;Examples: &lt;code&gt;SF&lt;/code&gt;, &lt;code&gt;NYY&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/PlayerBasic&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/ScoresBasic/{date}&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Games by Date (Basic)&quot;,
+        &quot;operationId&quot;: &quot;GamesByDateBasic&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          },
+          {
+            &quot;name&quot;: &quot;date&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;The date of the game(s).\n&lt;br&gt;Examples: &lt;code&gt;2017-JUL-31&lt;/code&gt;, &lt;code&gt;2017-SEP-01&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/ScoreBasic&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/pushauthgamestate&quot;: {
+      &quot;get&quot;: {
+        &quot;tags&quot;: [
+          &quot;Push&quot;
+        ],
+        &quot;summary&quot;: &quot;Push Authentication (Gamestate)&quot;,
+        &quot;description&quot;: &quot;This is a beta endpoint in development. The endpoint issues a token for mlb:game:gamestate.&quot;,
+        &quot;operationId&quot;: &quot;PushAuthenticationGamestate&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;null&quot;,
+              &quot;x-nullable&quot;: false
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/PlayersByActive&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Players by Active (Basic)&quot;,
+        &quot;operationId&quot;: &quot;PlayersByActiveBasic&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/PlayerBasic&quot;
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;/{format}/PlayersByFreeAgents&quot;: {
+      &quot;get&quot;: {
+        &quot;summary&quot;: &quot;Players by Free Agent (Basic)&quot;,
+        &quot;operationId&quot;: &quot;PlayersByFreeAgentBasic&quot;,
+        &quot;produces&quot;: [
+          &quot;application/json&quot;
+        ],
+        &quot;parameters&quot;: [
+          {
+            &quot;name&quot;: &quot;format&quot;,
+            &quot;in&quot;: &quot;path&quot;,
+            &quot;description&quot;: &quot;Desired response format. Valid entries are &lt;code&gt;XML&lt;/code&gt; or &lt;code&gt;JSON&lt;/code&gt;.&quot;,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;default&quot;: &quot;XML&quot;,
+            &quot;enum&quot;: [
+              &quot;XML&quot;,
+              &quot;JSON&quot;
+            ]
+          }
+        ],
+        &quot;responses&quot;: {
+          &quot;200&quot;: {
+            &quot;description&quot;: &quot;&quot;,
+            &quot;schema&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/PlayerBasic&quot;
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  &quot;securityDefinitions&quot;: {
+    &quot;apiKeyHeader&quot;: {
+      &quot;type&quot;: &quot;apiKey&quot;,
+      &quot;name&quot;: &quot;Ocp-Apim-Subscription-Key&quot;,
+      &quot;in&quot;: &quot;header&quot;
+    },
+    &quot;apiKeyQuery&quot;: {
+      &quot;type&quot;: &quot;apiKey&quot;,
+      &quot;name&quot;: &quot;key&quot;,
+      &quot;in&quot;: &quot;query&quot;
+    }
+  },
+  &quot;definitions&quot;: {
+    &quot;Team&quot;: {
+      &quot;properties&quot;: {
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Key&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Active&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;City&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StadiumID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;League&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Division&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PrimaryColor&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SecondaryColor&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TertiaryColor&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;QuaternaryColor&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WikipediaLogoUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WikipediaWordMarkUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;HeadCoach&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HittingCoach&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingCoach&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;Stadium&quot;: {
+      &quot;properties&quot;: {
+        &quot;StadiumID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Active&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;City&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;State&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Country&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Capacity&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Surface&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LeftField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;MidLeftField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LeftCenterField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;MidLeftCenterField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CenterField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;MidRightCenterField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RightCenterField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;MidRightField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RightField&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GeoLat&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GeoLong&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Altitude&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomePlateDirection&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Type&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;Game&quot;: {
+      &quot;properties&quot;: {
+        &quot;GameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Status&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Day&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeam&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeam&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;HomeTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;RescheduledGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StadiumID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Channel&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Inning&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningHalf&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamRuns&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamRuns&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamHits&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamHits&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamErrors&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamErrors&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WinningPitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LosingPitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SavingPitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Attendance&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamProbablePitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamProbablePitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Outs&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Balls&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Strikes&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CurrentPitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CurrentHitterID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamStartingPitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamStartingPitcherID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CurrentPitchingTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CurrentHittingTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PointSpread&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OverUnder&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamMoneyLine&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamMoneyLine&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ForecastTempLow&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ForecastTempHigh&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ForecastDescription&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ForecastWindChill&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ForecastWindSpeed&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ForecastWindDirection&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RescheduledFromGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunnerOnFirst&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunnerOnSecond&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunnerOnThird&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamStartingPitcher&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamStartingPitcher&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CurrentPitcher&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CurrentHitter&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WinningPitcher&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LosingPitcher&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SavingPitcher&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DueUpHitterID1&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DueUpHitterID2&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DueUpHitterID3&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GlobalAwayTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GlobalHomeTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;PointSpreadAwayTeamMoneyLine&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PointSpreadHomeTeamMoneyLine&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LastPlay&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IsClosed&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Updated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Innings&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/definitions/Inning&quot;
+          }
+        },
+        &quot;GameEndDateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeRotationNumber&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayRotationNumber&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;NeutralVenue&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningDescription&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OverPayout&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UnderPayout&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SeriesInfo&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/Series&quot;
+        },
+        &quot;DateTimeUTC&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;Inning&quot;: {
+      &quot;properties&quot;: {
+        &quot;InningID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;InningNumber&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;AwayTeamRuns&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamRuns&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;Series&quot;: {
+      &quot;properties&quot;: {
+        &quot;HomeTeamWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;AwayTeamWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GameNumber&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;MaxLength&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        }
+      }
+    },
+    &quot;Player&quot;: {
+      &quot;properties&quot;: {
+        &quot;PlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;SportsDataID&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Status&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Team&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Jersey&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PositionCategory&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Position&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;MLBAMID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FirstName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LastName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BatHand&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ThrowHand&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Height&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Weight&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthDate&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthCity&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthState&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthCountry&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HighSchool&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;College&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ProDebut&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Salary&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PhotoUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SportRadarPlayerID&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RotoworldPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RotoWirePlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyAlarmPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StatsPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SportsDirectPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;XmlTeamPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InjuryStatus&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InjuryBodyPart&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InjuryStartDate&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InjuryNotes&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FanDuelPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DraftKingsPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;YahooPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UpcomingGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FanDuelName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DraftKingsName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;YahooName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyDraftName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyDraftPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Experience&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UsaTodayPlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UsaTodayHeadshotUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UsaTodayHeadshotNoBackgroundUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UsaTodayHeadshotUpdated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;UsaTodayHeadshotNoBackgroundUpdated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;TeamGame&quot;: {
+      &quot;properties&quot;: {
+        &quot;StatID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Team&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OpponentID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Opponent&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Day&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeOrAway&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IsGameOver&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GlobalGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalOpponentID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Updated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Games&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPoints&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AtBats&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Runs&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Hits&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Singles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Doubles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Triples&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunsBattedIn&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BattingAverage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Outs&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Strikeouts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Walks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HitByPitch&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Sacrifices&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SacrificeFlies&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GroundIntoDoublePlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StolenBases&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CaughtStealing&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchesSeen&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SluggingPercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OnBasePlusSlugging&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Errors&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Wins&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Losses&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Saves&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningsPitchedDecimal&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TotalOutsPitched&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningsPitchedFull&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningsPitchedOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;EarnedRunAverage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHits&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingEarnedRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingWalks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingStrikeouts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHomeRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchesThrown&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchesThrownStrikes&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WalksHitsPerInningsPitched&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBattingAverageAgainst&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GrandSlams&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsFanDuel&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsDraftKings&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsYahoo&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PlateAppearances&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TotalBases&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FlyOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GroundOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LineOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PopOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IntentionalWalks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ReachedOnError&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BattingAverageOnBallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WeightedOnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSingles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingDoubles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingTriples&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingGrandSlams&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHitByPitch&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSacrifices&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSacrificeFlies&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingGroundIntoDoublePlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingCompleteGames&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingShutOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingNoHitters&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingPerfectGames&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingPlateAppearances&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingTotalBases&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingFlyOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingGroundOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingLineOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingPopOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingIntentionalWalks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingReachedOnError&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingCatchersInterference&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingOnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSluggingPercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingOnBasePlusSlugging&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingStrikeoutsPerNineInnings&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingWalksPerNineInnings&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBattingAverageOnBallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingWeightedOnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DoublePlays&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingDoublePlays&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BattingOrderConfirmed&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IsolatedPower&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FieldingIndependentPitching&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingQualityStarts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingInningStarted&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LeftOnBase&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHolds&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBlownSaves&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SubstituteBattingOrder&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SubstituteBattingOrderSequence&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsFantasyDraft&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsBatting&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsPitching&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;TeamSeason&quot;: {
+      &quot;properties&quot;: {
+        &quot;StatID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Team&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Updated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Games&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPoints&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AtBats&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Runs&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Hits&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Singles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Doubles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Triples&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunsBattedIn&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BattingAverage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Outs&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Strikeouts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Walks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HitByPitch&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Sacrifices&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SacrificeFlies&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GroundIntoDoublePlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StolenBases&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;CaughtStealing&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchesSeen&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SluggingPercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OnBasePlusSlugging&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Errors&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Wins&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Losses&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Saves&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningsPitchedDecimal&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TotalOutsPitched&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningsPitchedFull&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningsPitchedOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;EarnedRunAverage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHits&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingEarnedRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingWalks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingStrikeouts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHomeRuns&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchesThrown&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchesThrownStrikes&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WalksHitsPerInningsPitched&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBattingAverageAgainst&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GrandSlams&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsFanDuel&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsDraftKings&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsYahoo&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PlateAppearances&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TotalBases&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FlyOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GroundOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LineOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PopOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IntentionalWalks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ReachedOnError&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BattingAverageOnBallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WeightedOnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSingles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingDoubles&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingTriples&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingGrandSlams&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHitByPitch&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSacrifices&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSacrificeFlies&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingGroundIntoDoublePlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingCompleteGames&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingShutOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingNoHitters&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingPerfectGames&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingPlateAppearances&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingTotalBases&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingFlyOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingGroundOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingLineOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingPopOuts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingIntentionalWalks&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingReachedOnError&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingCatchersInterference&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingOnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingSluggingPercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingOnBasePlusSlugging&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingStrikeoutsPerNineInnings&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingWalksPerNineInnings&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBattingAverageOnBallsInPlay&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingWeightedOnBasePercentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DoublePlays&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingDoublePlays&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BattingOrderConfirmed&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IsolatedPower&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FieldingIndependentPitching&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingQualityStarts&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingInningStarted&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LeftOnBase&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingHolds&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PitchingBlownSaves&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SubstituteBattingOrder&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SubstituteBattingOrderSequence&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsFantasyDraft&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsBatting&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FantasyPointsPitching&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;News&quot;: {
+      &quot;properties&quot;: {
+        &quot;NewsID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Source&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Updated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TimeAgo&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Title&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Content&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Url&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TermsOfUse&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Author&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Categories&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Team&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PlayerID2&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TeamID2&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Team2&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OriginalSource&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;OriginalSourceUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;Season&quot;: {
+      &quot;properties&quot;: {
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;RegularSeasonStartDate&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PostSeasonStartDate&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ApiSeason&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;Standing&quot;: {
+      &quot;properties&quot;: {
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Key&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;City&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;League&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Division&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Wins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Losses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Percentage&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DivisionWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DivisionLosses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GamesBehind&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LastTenGamesWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LastTenGamesLosses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Streak&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LeagueRank&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DivisionRank&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WildCardRank&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;WildCardGamesBehind&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeLosses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayLosses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DayWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DayLosses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;NightWins&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;NightLosses&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunsScored&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RunsAgainst&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;ScheduleBasic&quot;: {
+      &quot;properties&quot;: {
+        &quot;GameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Status&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Day&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeam&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeam&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RescheduledGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StadiumID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IsClosed&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Updated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GameEndDateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DateTimeUTC&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SeriesInfo&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/Series&quot;
+        },
+        &quot;RescheduledFromGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;PlayerBasic&quot;: {
+      &quot;properties&quot;: {
+        &quot;PlayerID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;SportsDataID&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Status&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;TeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Team&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Jersey&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;PositionCategory&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Position&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;FirstName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;LastName&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthDate&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthCity&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthState&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BirthCountry&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;BatHand&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;ThrowHand&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Height&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Weight&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    },
+    &quot;ScoreBasic&quot;: {
+      &quot;properties&quot;: {
+        &quot;AwayTeamRuns&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamRuns&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamHits&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamHits&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamErrors&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamErrors&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Attendance&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GlobalGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GlobalAwayTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;GlobalHomeTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;NeutralVenue&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Inning&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;InningHalf&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Season&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;SeasonType&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Status&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;Day&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeam&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeam&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;AwayTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;HomeTeamID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;RescheduledGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;StadiumID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;IsClosed&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;x-nullable&quot;: false
+        },
+        &quot;Updated&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;GameEndDateTime&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;DateTimeUTC&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;x-nullable&quot;: true
+        },
+        &quot;SeriesInfo&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/Series&quot;
+        },
+        &quot;RescheduledFromGameID&quot;: {
+          &quot;type&quot;: &quot;integer&quot;,
+          &quot;x-nullable&quot;: true
+        }
+      }
+    }
+  }
+}</schema>
+    <schemaType>OpenApi</schemaType>
+    <schemaUploadFileExtension>json</schemaUploadFileExtension>
+    <schemaUploadFileName>SCOTHOOK_1-mlb-v_3_scores-1.0-resolved</schemaUploadFileName>
+    <serviceBinding>{&quot;host&quot;:&quot;api.sportsdata.io&quot;,&quot;basePath&quot;:&quot;/v3/mlb/scores&quot;,&quot;allowedSchemes&quot;:[&quot;HTTP&quot;,&quot;HTTPS&quot;],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>4</systemVersion>
+</ExternalServiceRegistration>
