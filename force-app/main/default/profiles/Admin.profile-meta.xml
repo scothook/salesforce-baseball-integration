@@ -11,11 +11,24 @@
         <field>Game__c.Home_Team__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Game__c.Stadium__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Game__c.Start_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Game__c-Game Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Inning__c-Inning Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Stadium__c-Stadium Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Team__c-Team Layout</layout>
@@ -36,6 +49,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>Inning__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Stadium__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
