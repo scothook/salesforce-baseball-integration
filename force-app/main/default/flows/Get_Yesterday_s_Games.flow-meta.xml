@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Games_By_Date</name>
+        <label>Get Games By Date</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
+        <actionName>GetGamesByDate.Get Games By Date</actionName>
+        <actionType>externalService</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>date</name>
+            <value>
+                <stringValue>2023-OCT-24</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>key</name>
+            <value>
+                <stringValue>2c332a81a36e484da7dda38c11a5e098</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>GetGamesByDate.Get Games By Date</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Get Yesterday&apos;s Games {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Yesterday&apos;s Games</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Games_By_Date</targetReference>
+        </connector>
+        <object>Game__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2023-10-26</startDate>
+            <startTime>00:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

@@ -3233,7 +3233,7 @@
     <schemaType>OpenApi</schemaType>
     <schemaUploadFileExtension>json</schemaUploadFileExtension>
     <schemaUploadFileName>SCOTHOOK_1-mlb-v_3_scores-1.0-resolved</schemaUploadFileName>
-    <serviceBinding>{&quot;host&quot;:&quot;api.sportsdata.io&quot;,&quot;basePath&quot;:&quot;/v3/mlb/scores&quot;,&quot;allowedSchemes&quot;:[&quot;HTTP&quot;,&quot;HTTPS&quot;],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{}}</serviceBinding>
+    <serviceBinding>{&quot;host&quot;:&quot;api.sportsdata.io&quot;,&quot;basePath&quot;:&quot;/v3/mlb/scores&quot;,&quot;allowedSchemes&quot;:[&quot;HTTPS&quot;,&quot;HTTP&quot;],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{}}</serviceBinding>
     <status>Complete</status>
     <systemVersion>4</systemVersion>
 </ExternalServiceRegistration>
