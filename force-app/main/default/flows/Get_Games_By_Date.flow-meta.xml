@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionCalls>
+        <name>Get_Games_By_Date</name>
+        <label>Get Games By Date</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <actionName>GetGames.Get Games By Date</actionName>
+        <actionType>externalService</actionType>
+        <connector>
+            <targetReference>Get_Games_Data</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>date</name>
+            <value>
+                <stringValue>2023-OCT-24</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>key</name>
+            <value>
+                <stringValue>2c332a81a36e484da7dda38c11a5e098</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>GetGames.Get Games By Date</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Get_Games_Data</name>
+        <label>Get Games Data</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <assignmentItems>
+            <assignToReference>GetGames</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Games_By_Date.2XX</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <dynamicChoiceSets>
+        <name>Games_Data</name>
+        <collectionReference>Get_Games_By_Date.2XX</collectionReference>
+        <dataType>Number</dataType>
+        <displayField>GameID</displayField>
+        <object xsi:nil="true"/>
+        <valueField>GameID</valueField>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <interviewLabel>Get Games By Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Games By Date</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Games_By_Date</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>GetGames</name>
+        <apexClass>ExternalService__GetGames_Getx20Gamesx20Byx20Date_OUT_2XX</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
