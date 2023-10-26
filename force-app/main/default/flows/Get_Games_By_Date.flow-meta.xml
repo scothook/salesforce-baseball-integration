@@ -14,7 +14,7 @@
         <inputParameters>
             <name>date</name>
             <value>
-                <stringValue>2023-OCT-24</stringValue>
+                <stringValue>2017-JUL-31</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -40,6 +40,9 @@
                 <elementReference>Get_Games_By_Date.2XX</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>Transform_Games</targetReference>
+        </connector>
     </assignments>
     <dynamicChoiceSets>
         <name>Games_Data</name>
@@ -71,6 +74,13 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Game_Records</name>
+        <label>Create Game Records</label>
+        <locationX>176</locationX>
+        <locationY>458</locationY>
+        <inputReference>Transform_Games</inputReference>
+    </recordCreates>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
@@ -79,6 +89,49 @@
         </connector>
     </start>
     <status>Draft</status>
+    <transforms>
+        <name>Transform_Games</name>
+        <label>Transform Games</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <connector>
+            <targetReference>Create_Game_Records</targetReference>
+        </connector>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <objectType>Game__c</objectType>
+        <scale>0</scale>
+        <transformValues>
+            <transformValueActions>
+                <outputFieldApiName>Away_Team_Errors__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>GetGames[$EachItem].AwayTeamErrors</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Away_Team_Hits__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>GetGames[$EachItem].AwayTeamHits</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Home_Team_Errors__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>GetGames[$EachItem].HomeTeamErrors</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Home_Team_Hits__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>GetGames[$EachItem].HomeTeamHits</elementReference>
+                </value>
+            </transformValueActions>
+        </transformValues>
+    </transforms>
     <variables>
         <name>GetGames</name>
         <apexClass>ExternalService__GetGames_Getx20Gamesx20Byx20Date_OUT_2XX</apexClass>
