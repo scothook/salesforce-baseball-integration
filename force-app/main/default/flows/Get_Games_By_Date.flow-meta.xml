@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Assign_Teams_to_Games</name>
+        <label>Assign Teams to Games</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <actionName>assignTeamstoGames</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Create_Games</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>inputGames</name>
+            <value>
+                <elementReference>Transform_Games</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>assignTeamstoGames</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
     <actionCalls>
         <name>Get_Games_By_Date</name>
         <label>Get Games By Date</label>
@@ -8,7 +29,7 @@
         <actionName>GetGames.Get Games By Date</actionName>
         <actionType>externalService</actionType>
         <connector>
-            <targetReference>Get_Games_Data</targetReference>
+            <targetReference>Transform_Games</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -28,30 +49,6 @@
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
-    <assignments>
-        <name>Get_Games_Data</name>
-        <label>Get Games Data</label>
-        <locationX>176</locationX>
-        <locationY>242</locationY>
-        <assignmentItems>
-            <assignToReference>GetGames</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Games_By_Date.2XX</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Transform_Games</targetReference>
-        </connector>
-    </assignments>
-    <dynamicChoiceSets>
-        <name>Games_Data</name>
-        <collectionReference>Get_Games_By_Date.2XX</collectionReference>
-        <dataType>Number</dataType>
-        <displayField>GameID</displayField>
-        <object xsi:nil="true"/>
-        <valueField>GameID</valueField>
-    </dynamicChoiceSets>
     <environments>Default</environments>
     <interviewLabel>Get Games By Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Get Games By Date</label>
@@ -75,11 +72,11 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
-        <name>Create_Game_Records</name>
-        <label>Create Game Records</label>
+        <name>Create_Games</name>
+        <label>Create Games</label>
         <locationX>176</locationX>
         <locationY>458</locationY>
-        <inputReference>Transform_Games</inputReference>
+        <inputReference>Assign_Teams_to_Games</inputReference>
     </recordCreates>
     <start>
         <locationX>50</locationX>
@@ -93,9 +90,9 @@
         <name>Transform_Games</name>
         <label>Transform Games</label>
         <locationX>176</locationX>
-        <locationY>350</locationY>
+        <locationY>242</locationY>
         <connector>
-            <targetReference>Create_Game_Records</targetReference>
+            <targetReference>Assign_Teams_to_Games</targetReference>
         </connector>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
@@ -106,38 +103,44 @@
                 <outputFieldApiName>Away_Team_Errors__c</outputFieldApiName>
                 <transformType>Map</transformType>
                 <value>
-                    <elementReference>GetGames[$EachItem].AwayTeamErrors</elementReference>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].AwayTeamErrors</elementReference>
                 </value>
             </transformValueActions>
             <transformValueActions>
                 <outputFieldApiName>Away_Team_Hits__c</outputFieldApiName>
                 <transformType>Map</transformType>
                 <value>
-                    <elementReference>GetGames[$EachItem].AwayTeamHits</elementReference>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].AwayTeamHits</elementReference>
                 </value>
             </transformValueActions>
             <transformValueActions>
                 <outputFieldApiName>Home_Team_Errors__c</outputFieldApiName>
                 <transformType>Map</transformType>
                 <value>
-                    <elementReference>GetGames[$EachItem].HomeTeamErrors</elementReference>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].HomeTeamErrors</elementReference>
                 </value>
             </transformValueActions>
             <transformValueActions>
                 <outputFieldApiName>Home_Team_Hits__c</outputFieldApiName>
                 <transformType>Map</transformType>
                 <value>
-                    <elementReference>GetGames[$EachItem].HomeTeamHits</elementReference>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].HomeTeamHits</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Away_Team__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].AwayTeam</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Home_Team__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].HomeTeam</elementReference>
                 </value>
             </transformValueActions>
         </transformValues>
     </transforms>
-    <variables>
-        <name>GetGames</name>
-        <apexClass>ExternalService__GetGames_Getx20Gamesx20Byx20Date_OUT_2XX</apexClass>
-        <dataType>Apex</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
 </Flow>
