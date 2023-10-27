@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Assign_Games_To_Innings</name>
+        <label>Assign Games To Innings</label>
+        <locationX>264</locationX>
+        <locationY>782</locationY>
+        <actionName>assignGamestoInnings</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Create_Innings</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>inputInnings</name>
+            <value>
+                <elementReference>Transform_Innings</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>assignGamestoInnings</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
         <name>Assign_Teams_to_Games</name>
         <label>Assign Teams to Games</label>
         <locationX>176</locationX>
@@ -35,7 +56,7 @@
         <inputParameters>
             <name>date</name>
             <value>
-                <stringValue>2017-JUL-31</stringValue>
+                <stringValue>2017-JUL-17</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -52,6 +73,17 @@
     <environments>Default</environments>
     <interviewLabel>Get Games By Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Get Games By Date</label>
+    <loops>
+        <name>Loop_Through_Games</name>
+        <label>Loop Through Games</label>
+        <locationX>176</locationX>
+        <locationY>566</locationY>
+        <collectionReference>Get_Games_By_Date.2XX</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Transform_Innings</targetReference>
+        </nextValueConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -76,7 +108,20 @@
         <label>Create Games</label>
         <locationX>176</locationX>
         <locationY>458</locationY>
+        <connector>
+            <targetReference>Loop_Through_Games</targetReference>
+        </connector>
         <inputReference>Assign_Teams_to_Games</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Innings</name>
+        <label>Create Innings</label>
+        <locationX>264</locationX>
+        <locationY>890</locationY>
+        <connector>
+            <targetReference>Loop_Through_Games</targetReference>
+        </connector>
+        <inputReference>Assign_Games_To_Innings</inputReference>
     </recordCreates>
     <start>
         <locationX>50</locationX>
@@ -141,6 +186,71 @@
                     <elementReference>Get_Games_By_Date.2XX[$EachItem].HomeTeam</elementReference>
                 </value>
             </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Game_Sports_Data_ID__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].GameID</elementReference>
+                </value>
+            </transformValueActions>
         </transformValues>
     </transforms>
+    <transforms>
+        <name>Transform_Innings</name>
+        <label>Transform Innings</label>
+        <locationX>264</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Assign_Games_To_Innings</targetReference>
+        </connector>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <objectType>Inning__c</objectType>
+        <scale>0</scale>
+        <transformValues>
+            <transformValueActions>
+                <outputFieldApiName>Away_Team_Runs__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Loop_Through_Games.Innings[$EachItem].AwayTeamRuns</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Game__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Loop_Through_Games.Innings[$EachItem].GameID</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Home_Team_Runs__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Loop_Through_Games.Innings[$EachItem].HomeTeamRuns</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Inning_Number__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Loop_Through_Games.Innings[$EachItem].InningNumber</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Inning_Sports_Data_ID__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Loop_Through_Games.Innings[$EachItem].InningID</elementReference>
+                </value>
+            </transformValueActions>
+        </transformValues>
+    </transforms>
+    <variables>
+        <name>Innings_To_Insert</name>
+        <apexClass>ExternalService__GetGames_Getx20Gamesx20Byx20Date_OUT_2XX_Innings</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>
