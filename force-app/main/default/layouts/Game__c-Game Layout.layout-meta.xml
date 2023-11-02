@@ -17,6 +17,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Home_Team_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Home_Team_Runs__c</field>
             </layoutItems>
             <layoutItems>
@@ -36,6 +40,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Away_Team__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Away_Team_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

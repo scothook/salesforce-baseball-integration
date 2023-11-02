@@ -3,8 +3,8 @@
         <table>
             <tr>
                 <th></th>
-                <template for:each={innings} for:item="inning">
-                    <th key={inning.number}>{inning.number}</th>
+                <template for:each={records} for:item="inning">
+                    <th key={inning.fields.Inning_Number__c.value}>{inning.fields.Inning_Number__c.value}</th>
                 </template>
                 <th>R</th>
                 <th>H</th>
@@ -12,8 +12,8 @@
             </tr>
             <tr>
                 <td>{homeTeam}</td>
-                <template for:each={homeScores} for:item="score">
-                    <td key={score.number}>{score.score}</td>
+                <template for:each={records} for:item="score">
+                    <td key={score.fields.Home_Team_Runs__c.value}>{score.fields.Home_Team_Runs__c.value}</td>
                 </template>
                 <td>{homeTotalRuns}</td>
                 <td>{homeTotalHits}</td>
@@ -21,13 +21,14 @@
             </tr>
             <tr>
                 <td>{awayTeam}</td>
-                <template for:each={awayScores} for:item="score">
-                    <td key={score.number}>{score.score}</td>
+                <template for:each={records} for:item="score">
+                    <td key={score.fields.Away_Team_Runs__c.value}>{score.fields.Away_Team_Runs__c.value}</td>
                 </template>
                 <td>{awayTotalRuns}</td>
                 <td>{awayTotalHits}</td>
                 <td>{awayTotalErrors}</td>
             </tr>
+            <tr></tr>
         </table>
     </lightning-card>
 </template>

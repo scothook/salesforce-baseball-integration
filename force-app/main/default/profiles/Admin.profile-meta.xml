@@ -26,6 +26,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Game__c.Away_Team_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Game__c.Away_Team_Runs__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -48,6 +53,11 @@
         <editable>true</editable>
         <field>Game__c.Home_Team_Hits__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Game__c.Home_Team_Name__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
