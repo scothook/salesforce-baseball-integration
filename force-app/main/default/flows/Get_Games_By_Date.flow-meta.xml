@@ -4,7 +4,7 @@
         <name>Assign_Games_To_Innings</name>
         <label>Assign Games To Innings</label>
         <locationX>264</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <actionName>assignGamestoInnings</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -25,7 +25,7 @@
         <name>Assign_Teams_to_Games</name>
         <label>Assign Teams to Games</label>
         <locationX>176</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <actionName>assignTeamstoGames</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -46,7 +46,7 @@
         <name>Get_Games_By_Date</name>
         <label>Get Games By Date</label>
         <locationX>176</locationX>
-        <locationY>134</locationY>
+        <locationY>242</locationY>
         <actionName>GetGames.Get Games By Date</actionName>
         <actionType>externalService</actionType>
         <connector>
@@ -56,7 +56,7 @@
         <inputParameters>
             <name>date</name>
             <value>
-                <stringValue>2017-JUL-1</stringValue>
+                <elementReference>Input_Date</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -77,7 +77,7 @@
         <name>Loop_Through_Games</name>
         <label>Loop Through Games</label>
         <locationX>176</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <collectionReference>Get_Games_By_Date.2XX</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -107,7 +107,7 @@
         <name>Create_Games</name>
         <label>Create Games</label>
         <locationX>176</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <connector>
             <targetReference>Loop_Through_Games</targetReference>
         </connector>
@@ -117,25 +117,49 @@
         <name>Create_Innings</name>
         <label>Create Innings</label>
         <locationX>264</locationX>
-        <locationY>890</locationY>
+        <locationY>998</locationY>
         <connector>
             <targetReference>Loop_Through_Games</targetReference>
         </connector>
         <inputReference>Assign_Games_To_Innings</inputReference>
     </recordCreates>
+    <screens>
+        <name>Date_Pick_Screen</name>
+        <label>Date Pick Screen</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Get_Games_By_Date</targetReference>
+        </connector>
+        <fields>
+            <name>Input_Date</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <stringValue>2023-JUL-31</stringValue>
+            </defaultValue>
+            <fieldText>Date</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Games_By_Date</targetReference>
+            <targetReference>Date_Pick_Screen</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <transforms>
         <name>Transform_Games</name>
         <label>Transform Games</label>
         <locationX>176</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <connector>
             <targetReference>Assign_Teams_to_Games</targetReference>
         </connector>
@@ -199,7 +223,7 @@
         <name>Transform_Innings</name>
         <label>Transform Innings</label>
         <locationX>264</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <connector>
             <targetReference>Assign_Games_To_Innings</targetReference>
         </connector>
