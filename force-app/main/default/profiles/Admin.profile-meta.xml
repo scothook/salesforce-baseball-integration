@@ -57,7 +57,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Game__c.Home_Team_Name__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

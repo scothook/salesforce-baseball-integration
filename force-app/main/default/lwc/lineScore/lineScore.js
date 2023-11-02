@@ -8,8 +8,8 @@ import HOME_TOTAL_HITS_FIELD from "@salesforce/schema/Game__c.Home_Team_Hits__c"
 import AWAY_TOTAL_HITS_FIELD from "@salesforce/schema/Game__c.Away_Team_Hits__c"
 import HOME_TOTAL_ERRORS_FIELD from "@salesforce/schema/Game__c.Home_Team_Errors__c"
 import AWAY_TOTAL_ERRORS_FIELD from "@salesforce/schema/Game__c.Away_Team_Errors__c"
-import HOME_TEAM_FIELD from "@salesforce/schema/Game__c.Home_Team__c"
-import AWAY_TEAM_FIELD from "@salesforce/schema/Game__c.Away_Team__c"
+import HOME_TEAM_FIELD from "@salesforce/schema/Game__c.Home_Team_Name__c"
+import AWAY_TEAM_FIELD from "@salesforce/schema/Game__c.Away_Team_Name__c"
 
 const fields = [HOME_TOTAL_RUNS_FIELD, AWAY_TOTAL_RUNS_FIELD, HOME_TOTAL_HITS_FIELD, AWAY_TOTAL_HITS_FIELD, HOME_TOTAL_ERRORS_FIELD, AWAY_TOTAL_ERRORS_FIELD, HOME_TEAM_FIELD, AWAY_TEAM_FIELD];
 

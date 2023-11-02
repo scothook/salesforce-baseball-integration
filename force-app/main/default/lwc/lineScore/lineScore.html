@@ -11,15 +11,6 @@
                 <th>E</th>
             </tr>
             <tr>
-                <td>{homeTeam}</td>
-                <template for:each={records} for:item="score">
-                    <td key={score.fields.Home_Team_Runs__c.value}>{score.fields.Home_Team_Runs__c.value}</td>
-                </template>
-                <td>{homeTotalRuns}</td>
-                <td>{homeTotalHits}</td>
-                <td>{homeTotalErrors}</td>
-            </tr>
-            <tr>
                 <td>{awayTeam}</td>
                 <template for:each={records} for:item="score">
                     <td key={score.fields.Away_Team_Runs__c.value}>{score.fields.Away_Team_Runs__c.value}</td>
@@ -27,6 +18,15 @@
                 <td>{awayTotalRuns}</td>
                 <td>{awayTotalHits}</td>
                 <td>{awayTotalErrors}</td>
+            </tr>
+            <tr>
+                <td>{homeTeam}</td>
+                <template for:each={records} for:item="score">
+                    <td key={score.fields.Home_Team_Runs__c.value}>{score.fields.Home_Team_Runs__c.value}</td>
+                </template>
+                <td>{homeTotalRuns}</td>
+                <td>{homeTotalHits}</td>
+                <td>{homeTotalErrors}</td>
             </tr>
             <tr></tr>
         </table>
