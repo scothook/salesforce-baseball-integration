@@ -221,7 +221,7 @@
                 <outputFieldApiName>Start_DateTime_Raw__c</outputFieldApiName>
                 <transformType>Map</transformType>
                 <value>
-                    <elementReference>Get_Games_By_Date.2XX[$EachItem].Day</elementReference>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].z0DateTime</elementReference>
                 </value>
             </transformValueActions>
         </transformValues>
