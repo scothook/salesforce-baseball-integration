@@ -154,7 +154,7 @@
             <targetReference>Date_Pick_Screen</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <transforms>
         <name>Transform_Games</name>
         <label>Transform Games</label>
@@ -215,6 +215,13 @@
                 <transformType>Map</transformType>
                 <value>
                     <elementReference>Get_Games_By_Date.2XX[$EachItem].GameID</elementReference>
+                </value>
+            </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Start_DateTime_Raw__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].Day</elementReference>
                 </value>
             </transformValueActions>
         </transformValues>

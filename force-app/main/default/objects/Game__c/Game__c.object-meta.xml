@@ -147,7 +147,7 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Game_Custom</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>An MLB game.</description>
     <enableActivities>true</enableActivities>

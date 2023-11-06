@@ -40,6 +40,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Game__c.Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Game__c.Game_Sports_Data_ID__c</field>
         <readable>true</readable>
@@ -72,6 +77,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Game__c.Stadium__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Game__c.Start_DateTime_Raw__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

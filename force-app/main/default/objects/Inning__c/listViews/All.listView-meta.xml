@@ -3,6 +3,7 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>Game__c</columns>
+    <columns>Inning_Number__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
