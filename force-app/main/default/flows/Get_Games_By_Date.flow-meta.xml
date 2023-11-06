@@ -4,7 +4,7 @@
         <name>Assign_Games_To_Innings</name>
         <label>Assign Games To Innings</label>
         <locationX>264</locationX>
-        <locationY>890</locationY>
+        <locationY>998</locationY>
         <actionName>assignGamestoInnings</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -22,6 +22,27 @@
         <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
+        <name>Assign_Stadiums_to_Games</name>
+        <label>Assign Stadiums to Games</label>
+        <locationX>176</locationX>
+        <locationY>566</locationY>
+        <actionName>assignStadiumsToGames</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Create_Games</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>inputGames</name>
+            <value>
+                <elementReference>Assign_Teams_to_Games</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>assignStadiumsToGames</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
         <name>Assign_Teams_to_Games</name>
         <label>Assign Teams to Games</label>
         <locationX>176</locationX>
@@ -29,7 +50,7 @@
         <actionName>assignTeamstoGames</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Create_Games</targetReference>
+            <targetReference>Assign_Stadiums_to_Games</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -56,7 +77,7 @@
         <inputParameters>
             <name>date</name>
             <value>
-                <elementReference>Input_Date</elementReference>
+                <elementReference>Date_Converted</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -71,13 +92,34 @@
     </actionCalls>
     <apiVersion>58.0</apiVersion>
     <environments>Default</environments>
+    <formulas>
+        <description>Converted to format required for URL</description>
+        <name>Date_Converted</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR({!Date}))+&quot;-&quot;
++CASE(TEXT(MONTH({!Date})), 
+&quot;1&quot;, &quot;JAN&quot;,
+&quot;2&quot;, &quot;FEB&quot;,
+&quot;3&quot;, &quot;MAR&quot;,
+&quot;4&quot;, &quot;APR&quot;,
+&quot;5&quot;, &quot;MAY&quot;,
+&quot;6&quot;, &quot;JUN&quot;,
+&quot;7&quot;, &quot;JUL&quot;,
+&quot;8&quot;, &quot;AUG&quot;,
+&quot;9&quot;, &quot;SEP&quot;,
+&quot;10&quot;, &quot;OCT&quot;,
+&quot;11&quot;, &quot;NOV&quot;,
+&quot;12&quot;, &quot;DEC&quot;,
+&quot;&quot;)
++&quot;-&quot; +TEXT(DAY({!Date}))</expression>
+    </formulas>
     <interviewLabel>Get Games By Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Get Games By Date</label>
     <loops>
         <name>Loop_Through_Games</name>
         <label>Loop Through Games</label>
         <locationX>176</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <collectionReference>Get_Games_By_Date.2XX</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -107,17 +149,17 @@
         <name>Create_Games</name>
         <label>Create Games</label>
         <locationX>176</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Loop_Through_Games</targetReference>
         </connector>
-        <inputReference>Assign_Teams_to_Games</inputReference>
+        <inputReference>Assign_Stadiums_to_Games</inputReference>
     </recordCreates>
     <recordCreates>
         <name>Create_Innings</name>
         <label>Create Innings</label>
         <locationX>264</locationX>
-        <locationY>998</locationY>
+        <locationY>1106</locationY>
         <connector>
             <targetReference>Loop_Through_Games</targetReference>
         </connector>
@@ -128,22 +170,51 @@
         <label>Date Pick Screen</label>
         <locationX>176</locationX>
         <locationY>134</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
             <targetReference>Get_Games_By_Date</targetReference>
         </connector>
         <fields>
-            <name>Input_Date</name>
-            <dataType>String</dataType>
-            <defaultValue>
-                <stringValue>2023-JUL-31</stringValue>
-            </defaultValue>
-            <fieldText>Date</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
+            <name>Date_Pick_Screen_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Date_Pick_Screen_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Date</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>$Flow.CurrentDate</elementReference>
+                    </defaultValue>
+                    <fieldText>Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>2</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Date_Pick_Screen_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>10</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
+        <nextOrFinishButtonLabel>Submit</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
@@ -224,13 +295,20 @@
                     <elementReference>Get_Games_By_Date.2XX[$EachItem].z0DateTime</elementReference>
                 </value>
             </transformValueActions>
+            <transformValueActions>
+                <outputFieldApiName>Stadium__c</outputFieldApiName>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>Get_Games_By_Date.2XX[$EachItem].StadiumID</elementReference>
+                </value>
+            </transformValueActions>
         </transformValues>
     </transforms>
     <transforms>
         <name>Transform_Innings</name>
         <label>Transform Innings</label>
         <locationX>264</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <connector>
             <targetReference>Assign_Games_To_Innings</targetReference>
         </connector>
