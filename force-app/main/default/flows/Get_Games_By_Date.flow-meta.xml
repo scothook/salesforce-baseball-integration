@@ -3,12 +3,12 @@
     <actionCalls>
         <name>Assign_Games_To_Innings</name>
         <label>Assign Games To Innings</label>
-        <locationX>264</locationX>
+        <locationX>352</locationX>
         <locationY>998</locationY>
         <actionName>assignGamestoInnings</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Create_Innings</targetReference>
+            <targetReference>Loop_Through_a_Game_s_Innings</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -91,6 +91,22 @@
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Add_Inning_to_Insert_Collection</name>
+        <label>Add Inning to Insert Collection</label>
+        <locationX>440</locationX>
+        <locationY>1214</locationY>
+        <assignmentItems>
+            <assignToReference>Inning_Insert_Collection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Through_a_Game_s_Innings</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_a_Game_s_Innings</targetReference>
+        </connector>
+    </assignments>
     <environments>Default</environments>
     <formulas>
         <description>Converted to format required for URL</description>
@@ -116,6 +132,20 @@
     <interviewLabel>Get Games By Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Get Games By Date</label>
     <loops>
+        <name>Loop_Through_a_Game_s_Innings</name>
+        <label>Loop Through a Game&apos;s Innings</label>
+        <locationX>352</locationX>
+        <locationY>1106</locationY>
+        <collectionReference>Assign_Games_To_Innings</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Inning_to_Insert_Collection</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Loop_Through_Games</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
         <name>Loop_Through_Games</name>
         <label>Loop Through Games</label>
         <locationX>176</locationX>
@@ -125,6 +155,9 @@
         <nextValueConnector>
             <targetReference>Transform_Innings</targetReference>
         </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Create_Innings</targetReference>
+        </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -158,12 +191,9 @@
     <recordCreates>
         <name>Create_Innings</name>
         <label>Create Innings</label>
-        <locationX>264</locationX>
-        <locationY>1106</locationY>
-        <connector>
-            <targetReference>Loop_Through_Games</targetReference>
-        </connector>
-        <inputReference>Assign_Games_To_Innings</inputReference>
+        <locationX>176</locationX>
+        <locationY>1490</locationY>
+        <inputReference>Inning_Insert_Collection</inputReference>
     </recordCreates>
     <screens>
         <name>Date_Pick_Screen</name>
@@ -307,7 +337,7 @@
     <transforms>
         <name>Transform_Innings</name>
         <label>Transform Innings</label>
-        <locationX>264</locationX>
+        <locationX>352</locationX>
         <locationY>890</locationY>
         <connector>
             <targetReference>Assign_Games_To_Innings</targetReference>
@@ -354,6 +384,14 @@
             </transformValueActions>
         </transformValues>
     </transforms>
+    <variables>
+        <name>Inning_Insert_Collection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Inning__c</objectType>
+    </variables>
     <variables>
         <name>Innings_To_Insert</name>
         <apexClass>ExternalService__GetGames_Getx20Gamesx20Byx20Date_OUT_2XX_Innings</apexClass>
